@@ -1,5 +1,5 @@
 (function(){
-  var app = angular.module("FarmersMarkets", [])
+  var app = angular.module("FarmersMarkets", ['ngRoute'])
 
   app.controller("MarketSearchController", function(){
     this.searchMarket = function(zipcode){
@@ -16,4 +16,4 @@
     }
   });
 
-})
+});
