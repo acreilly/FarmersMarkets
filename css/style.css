@@ -1,0 +1,18 @@
+body{
+	font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+}
+
+.container{
+	width: 50%;
+}
+
+ul{
+	padding: 5px;
+	list-style: none;
+}
+
+li{
+	text-align: left;
+	margin: 5px 0;
+	cursor: pointer;
+}
