@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" ng-app="FarmersMarkets">
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="js/marketsearch.js"></script>
+  <meta charset="UTF-8">
+  <title>Find a Farmer's Market near you</title>
+</head>
+<body>
+  <h1>Farmer's Markets</h1>
+<form ng-controller="MarketSearchController as searchCtrl" ng-submit="searchCtrl.searchMarket(zipcode)">
+  <input type="text" name="zipcode" placeholder="zipcode">
+  <input type="submit" value="Search">
+</form>
+</body>
+</html>
