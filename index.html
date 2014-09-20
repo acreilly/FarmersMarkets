@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en" ng-app="FarmersMarkets">
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="js/marketsearch.js"></script>
   <meta charset="UTF-8">
@@ -9,9 +8,16 @@
 </head>
 <body>
   <h1>Farmer's Markets</h1>
-<form ng-controller="MarketSearchController as searchCtrl" ng-submit="searchCtrl.searchMarket(zipcode)">
+<form action="" method="get">
   <input type="text" name="zipcode" placeholder="zipcode">
   <input type="submit" value="Search">
 </form>
+
+
+<div class="container">
+  <ul class="markets">
+
+  </ul>
+</div>
 </body>
 </html>
