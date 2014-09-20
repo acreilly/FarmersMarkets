@@ -41,13 +41,15 @@ MarketSearchView.prototype = {
   removeMarkets: function(){
 
   },
-  addDetails: function(market, details){
+  addOrRemoveDetails: function(market, details){
     var address = details.Address,
     googleLink = details.GoogleLink,
     products = details.Products,
     schedule = details.Schedule;
     if(market.childNodes.length <= 1){
     $(market).append("<ul class='list-unstyled'><li class='active'>" + schedule + "<br>" + address + "<br>" + googleLink + "<br>" + products + "</li></ul>")
+    } else{
+      $(market).children().remove();
     }
   },
   removeDetails: function(){
@@ -88,7 +90,7 @@ MarketSearchController.prototype = {
       jsonpCallback: 'detailResultHandler'
     }).done(function(data){
       var details = data.marketdetails;
-      this.view.addDetails(this.market, details)
+      this.view.addOrRemoveDetails(this.market, details)
     }.bind(this));
   }
 }
