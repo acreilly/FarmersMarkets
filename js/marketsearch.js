@@ -49,10 +49,13 @@ MarketSearchView.prototype = {
     products = details.Products,
     schedule = details.Schedule,
     api_key = 'AIzaSyCyRtY733lg5p6a1ZOJeY8hS3xbBXhEfOE';
+
     if($(market).siblings().length === 0){
-    $(market).after("<ul class='list-unstyled'><li class='active'>" + schedule + "<br>" + address + "<br>" + products + "<br><iframe src='https://www.google.com/maps/embed/v1/place?key=" + api_key + "&" + googleQuery + "'></iframe></li></ul>")
+      $(market).after("<ul><li><strong> Schedule: </strong>" + schedule + "</li><li><strong>Address: </strong>" + address + "</li><li><strong>Products: </strong>" + products + "</li><li><iframe src='https://www.google.com/maps/embed/v1/place?key=" + api_key + "&" + googleQuery + "'></iframe></li></ul>")
+      $(market).css("color", "red")
     } else{
       $(market).siblings().remove();
+      $(market).css("color", "black")
     }
   },
   removeDetails: function(){
