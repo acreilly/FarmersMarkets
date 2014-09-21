@@ -52,7 +52,7 @@ MarketSearchView.prototype = {
 
     if($(market).siblings().length === 0){
       $(market).after("<ul><li><strong> Schedule: </strong>" + schedule + "</li><li><strong>Address: </strong>" + address + "</li><li><strong>Products: </strong>" + products + "</li><li><iframe src='https://www.google.com/maps/embed/v1/place?key=" + api_key + "&" + googleQuery + "'></iframe></li></ul>")
-      $(market).css("color", "red")
+      $(market).css("color", "#008e00")
     } else{
       $(market).siblings().remove();
       $(market).css("color", "black")
