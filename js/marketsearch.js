@@ -45,10 +45,12 @@ MarketSearchView.prototype = {
   addOrRemoveDetails: function(market, details){
     var address = details.Address,
     googleLink = details.GoogleLink,
+    googleQuery = googleLink.substr(googleLink.indexOf('?') + 1),
     products = details.Products,
-    schedule = details.Schedule;
+    schedule = details.Schedule,
+    api_key = 'AIzaSyCyRtY733lg5p6a1ZOJeY8hS3xbBXhEfOE';
     if($(market).siblings().length === 0){
-    $(market).after("<ul class='list-unstyled'><li class='active'>" + schedule + "<br>" + address + "<br>" + googleLink + "<br>" + products + "</li></ul>")
+    $(market).after("<ul class='list-unstyled'><li class='active'>" + schedule + "<br>" + address + "<br>" + products + "<br><iframe src='https://www.google.com/maps/embed/v1/place?key=" + api_key + "&" + googleQuery + "'></iframe></li></ul>")
     } else{
       $(market).siblings().remove();
     }

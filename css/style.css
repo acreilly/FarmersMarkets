@@ -1,10 +1,11 @@
 body{
 	font-family: "Helvetica Neue", helvetica, arial, sans-serif;
-  background: url("../img/redpicnic.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.1)), color-stop(100%, rgba(255, 255, 255, 0.1))), url("../img/redpicnic.jpg") repeat 0 0;
 }
 
 h1{
   font-family: 'Rock Salt', cursive;
+  text-shadow: 0 1px 1px #000;
   color: white;
 
 }
@@ -51,4 +52,9 @@ input{
   border-radius: 2em;
   padding: 0.5em 1em;
   width: 300px;
+}
+
+iframe{
+  width: 480px;
+  height: 200px;
 }
