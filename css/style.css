@@ -26,10 +26,16 @@ ul span{
 	cursor: pointer;
   font-weight: bold;
   font-size: 20px;
+  text-shadow: 1px 1px 5px #fff;
 }
 
 ul span:hover{
   color: #008e00;
+}
+
+.active{
+  color:#008e00;
+  text-shadow: 1px 1px 5px #fff;
 }
 
 li{

@@ -22,7 +22,7 @@ $(document).ready(function(){
   var view = new MarketSearchView()
   var search = new MarketSearchController(view)
   $("form").on("submit", function(){
-    $(".container").addClass("searchBox")
+    search.view.removeMarkets()
     search.searchMarket()
   })
   $("ul").on("click", "span", function(){
@@ -33,13 +33,11 @@ $(document).ready(function(){
 
 function MarketSearchView(){}
 MarketSearchView.prototype = {
-  bindEvents: function(){
-
-  },
   addMarkets: function(){
 
   },
   removeMarkets: function(){
+    $(".container").addClass("searchBox")
 
   },
   addOrRemoveDetails: function(market, details){
@@ -52,14 +50,14 @@ MarketSearchView.prototype = {
 
     if($(market).siblings().length === 0){
       $(market).after("<ul class='info'><li><strong> Schedule: </strong>" + schedule + "</li><li><strong>Address: </strong>" + address + "</li><li><strong>Products: </strong>" + products + "</li><li><iframe src='https://www.google.com/maps/embed/v1/place?key=" + api_key + "&" + googleQuery + "'></iframe></li></ul>")
-      $(market).css("color", "#008e00")
+      $(market).addClass("active")
     } else{
-      $(market).siblings().remove();
-      $(market).css("color", "black")
+      this.removeDetails(market);
     }
   },
-  removeDetails: function(){
-
+  removeDetails: function(market){
+    $(market).siblings().remove();
+    $(market).removeClass("active");
   }
 }
 
@@ -78,12 +76,17 @@ MarketSearchController.prototype = {
       dataType: 'jsonp',
       jsonpCallback: 'searchResultsHandler'
     }).done(function(data){
-      $(data.results).each(function(){
-        var market = this.marketname
-        var marketname = market.substr(market.indexOf(' ')+1);
-        var miles = market.substr(0,market.indexOf(' '));
-        $(".markets").append("<li><span id='" + this.id + "'>" + miles + " miles: " + marketname + "</span></li>")
-      })
+      if(data.results[0].id === "Error"){
+        $(".markets").append("<li><strong>" + data.results[0].marketname + "</strong></li>");
+      } else {
+        $(data.results).each(function(){
+          var market = this.marketname
+          var marketname = market.substr(market.indexOf(' ')+1);
+          var miles = market.substr(0,market.indexOf(' '));
+          $(".markets").append("<li><span id='" + this.id + "'>" + miles + " miles: " + marketname + "</span></li>")
+
+        })
+      }
     });
   },
   getDetails: function(market){
