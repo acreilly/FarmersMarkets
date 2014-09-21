@@ -22,9 +22,10 @@ $(document).ready(function(){
   var view = new MarketSearchView()
   var search = new MarketSearchController(view)
   $("form").on("submit", function(){
+    $(".container").addClass("searchBox")
     search.searchMarket()
   })
-  $("ul").on("click", "li", function(){
+  $("ul").on("click", "span", function(){
     search.getDetails(this)
   })
 })
@@ -46,10 +47,10 @@ MarketSearchView.prototype = {
     googleLink = details.GoogleLink,
     products = details.Products,
     schedule = details.Schedule;
-    if(market.childNodes.length <= 1){
-    $(market).append("<ul class='list-unstyled'><li class='active'>" + schedule + "<br>" + address + "<br>" + googleLink + "<br>" + products + "</li></ul>")
+    if($(market).siblings().length === 0){
+    $(market).after("<ul class='list-unstyled'><li class='active'>" + schedule + "<br>" + address + "<br>" + googleLink + "<br>" + products + "</li></ul>")
     } else{
-      $(market).children().remove();
+      $(market).siblings().remove();
     }
   },
   removeDetails: function(){
@@ -76,7 +77,7 @@ MarketSearchController.prototype = {
         var market = this.marketname
         var marketname = market.substr(market.indexOf(' ')+1);
         var miles = market.substr(0,market.indexOf(' '));
-        $(".markets").append("<li id='" + this.id + "'>" + miles + " miles: " + marketname + "</li>")
+        $(".markets").append("<li><span id='" + this.id + "'>" + miles + " miles: " + marketname + "</span></li>")
       })
     });
   },
