@@ -43,13 +43,14 @@ MarketSearchView.prototype = {
   addOrRemoveDetails: function(market, details){
     var address = details.Address,
     googleLink = details.GoogleLink,
+    googleArray = googleLink.split("("),
+    googleCenter = googleArray[0].substr(googleLink.indexOf('?') + 1),
     googleQuery = googleLink.substr(googleLink.indexOf('?') + 1),
     products = details.Products,
     schedule = details.Schedule,
     api_key = 'AIzaSyCyRtY733lg5p6a1ZOJeY8hS3xbBXhEfOE';
-
     if($(market).siblings().length === 0){
-      $(market).after("<ul class='info'><li><strong> Schedule: </strong>" + schedule + "</li><li><strong>Address: </strong>" + address + "</li><li><strong>Products: </strong>" + products + "</li><li><iframe src='https://www.google.com/maps/embed/v1/place?key=" + api_key + "&" + googleQuery + "'></iframe></li></ul>")
+      $(market).after("<ul class='info'><li><strong> Schedule: </strong>" + schedule + "</li><li><strong>Address: </strong>" + address + "</li><li><strong>Products: </strong>" + products + "</li><li><iframe src='https://www.google.com/maps/embed/v1/place?key=" + api_key + "&" + googleCenter + "'></iframe></li></ul>")
       $(market).addClass("active")
     } else{
       this.removeDetails(market);
