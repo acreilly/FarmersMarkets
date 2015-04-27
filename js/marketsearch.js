@@ -30,7 +30,7 @@ MarketSearchView.prototype = {
       googleQuery = googleLink.substr(googleLink.indexOf('?') + 1),
       products = details.Products,
       schedule = details.Schedule,
-      api_key = 'AIzaSyCyRtY733lg5p6a1ZOJeY8hS3xbBXhEfOE';
+      api_key = 'AIzaSyBCGODBdUo-Un5kp_JQDmsoh3V9OzI0YXA';
 
       if($(market).siblings().length === 0){
 
